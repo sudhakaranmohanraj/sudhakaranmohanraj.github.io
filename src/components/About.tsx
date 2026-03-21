@@ -70,7 +70,7 @@ export default function About() {
             {/* ⭐ Image card */}
             <div className="relative rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-5">
               <img
-                src="/profile.png"
+                src="/profile.webp"
                 alt="Sudhakaran Mohanraj"
                 className="max-h-[420px] w-auto rounded-xl transition-transform duration-300 hover:scale-[1.03]"
               />

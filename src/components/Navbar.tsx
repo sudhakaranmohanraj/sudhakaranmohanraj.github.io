@@ -18,7 +18,7 @@ export default function Navbar() {
           className="flex items-center gap-3 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <img src="/sm-logo.png" className="w-10 h-10" />
+          <img src="/sm-logo.webp" className="w-10 h-10" />
           <span className="font-semibold text-lg">Sudhakaran Mohanraj ♡</span>
         </motion.div>
 

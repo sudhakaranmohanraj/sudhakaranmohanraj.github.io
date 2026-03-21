@@ -3,28 +3,28 @@ import { motion } from "framer-motion";
 /* ⭐ Photo storytelling data */
 const photos = [
   {
-    src: "/lens/temple1.jpg",
+    src: "/lens/temple1.webp",
     title: "Ranganathar Temple, Srirangam",
     desc: "World’s largest active temple complex, where devotion breathes through stone.",
   },
   {
-    src: "/lens/temple2.jpg",
+    src: "/lens/temple2.webp",
     title: "Brihadeeswarar Temple, Thanjavur",
     desc: "Chola brilliance carved in granite — timeless Dravidian mastery.",
   },
   {
-    src: "/lens/temple3.jpg",
+    src: "/lens/temple3.webp",
     title: "216 Feet of Language & Legacy",
     desc: "The Brihadeeswarar tower rises 216 feet — echoing the 216 compound letters of Tamil.",
     special: true, // ⭐ enables 216 animation
   },
   {
-    src: "/lens/leaf.jpeg",
+    src: "/lens/leaf.webp",
     title: "Leaf & Drop",
     desc: "An eternal love story between a leaf and a resting drop of water.",
   },
   {
-    src: "/lens/temple4.jpg",
+    src: "/lens/temple4.webp",
     title: "Chidambaram Temple",
     desc: "Where space becomes divine — the cosmic dance of Nataraja.",
   },

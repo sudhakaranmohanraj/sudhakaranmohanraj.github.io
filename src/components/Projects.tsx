@@ -9,7 +9,7 @@ const projects = [
     title: "AssetPro",
     description:
       "Sensitive Data Storing and Sharing System in Cloud using Beneficiary Access Code-based Encryption (BACE) with dynamic access control.",
-    image: "projects/assetpro.png",
+    image: "projects/assetpro.webp",
     tags: ["Python", "Cloud", "Security"],
   },
 ];

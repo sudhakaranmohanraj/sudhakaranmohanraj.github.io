@@ -110,7 +110,7 @@ export default function Hero() {
       >
         {/* ⭐ Neon logo */}
         <motion.img
-          src="/sm-logo.png"
+          src="/sm-logo.webp"
           animate={{
             scale: [1, 1.08, 1],
             opacity: [0.9, 1, 0.9],

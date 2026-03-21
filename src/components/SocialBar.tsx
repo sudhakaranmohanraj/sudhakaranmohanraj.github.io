@@ -8,6 +8,8 @@ export default function SocialBar() {
       <a
         href="https://wa.me/919092918658"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp"
         className="p-3 rounded-full bg-green-500/20 hover:bg-green-500 text-green-400 hover:text-white transition"
       >
         <MessageCircle size={22} />
@@ -17,6 +19,8 @@ export default function SocialBar() {
       <a
         href="https://www.instagram.com/sudhakar__vishwakarma"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
         className="p-3 rounded-full bg-pink-500/20 hover:bg-pink-500 text-pink-400 hover:text-white transition"
       >
         <Instagram size={22} />
@@ -26,6 +30,8 @@ export default function SocialBar() {
       <a
         href="https://linkedin.com/in/sudhakaranmohanraj"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
         className="p-3 rounded-full bg-blue-500/20 hover:bg-blue-500 text-blue-400 hover:text-white transition"
       >
         <Linkedin size={22} />
@@ -34,6 +40,7 @@ export default function SocialBar() {
       {/* Email */}
       <a
         href="mailto:sudhakaranmohanraj@gmail.com"
+        aria-label="Email"
         className="p-3 rounded-full bg-cyan-500/20 hover:bg-cyan-500 text-cyan-400 hover:text-white transition"
       >
         <Mail size={22} />

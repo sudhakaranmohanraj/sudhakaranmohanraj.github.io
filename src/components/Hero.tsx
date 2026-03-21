@@ -2,10 +2,11 @@ import { useRef, Suspense, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Text3D, Center, Float, Points, PointMaterial } from "@react-three/drei";
 import { motion } from "framer-motion";
+import * as THREE from "three";
 
 /* ⭐ Floating particles with mouse parallax */
 function Particles() {
-  const ref = useRef<any>();
+  const ref = useRef<THREE.Points>(null);
   const { mouse } = useThree();
 
   const particles = useMemo(() => {
@@ -21,19 +22,20 @@ function Particles() {
   useFrame((state) => {
     if (!ref.current) return;
 
-    const positions = ref.current.geometry.attributes.position.array;
+    const positions = ref.current.geometry.attributes.position;
+    const array = positions.array as Float32Array;
 
-    for (let i = 0; i < positions.length; i += 3) {
-      /* ⭐ upward float */
-      positions[i + 1] += 0.0025 + Math.sin(state.clock.elapsedTime + i) * 0.0007;
-      if (positions[i + 1] > 6) positions[i + 1] = -6;
+    for (let i = 0; i < array.length; i += 3) {
+      // vertical floating
+      array[i + 1] += 0.0025 + Math.sin(state.clock.elapsedTime + i) * 0.0007;
+      if (array[i + 1] > 6) array[i + 1] = -6;
 
-      /* ⭐ mouse parallax */
-      positions[i] += mouse.x * 0.0007;
-      positions[i + 2] += mouse.y * 0.0007;
+      // mouse parallax
+      array[i] += mouse.x * 0.0007;
+      array[i + 2] += mouse.y * 0.0007;
     }
 
-    ref.current.geometry.attributes.position.needsUpdate = true;
+    positions.needsUpdate = true;
   });
 
   return (
@@ -82,7 +84,7 @@ function AnimatedText() {
 export default function Hero() {
   return (
     <section className="h-[100svh] relative overflow-hidden w-screen">
-
+      
       {/* ⭐ Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900" />
 
@@ -101,7 +103,7 @@ export default function Hero() {
         </Canvas>
       </div>
 
-      {/* ⭐ UI layer (stable centering fix) */}
+      {/* ⭐ UI layer */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -111,6 +113,7 @@ export default function Hero() {
         {/* ⭐ Neon logo */}
         <motion.img
           src="/sm-logo.webp"
+          alt="Sudhakaran Mohanraj Logo"
           animate={{
             scale: [1, 1.08, 1],
             opacity: [0.9, 1, 0.9],
@@ -132,6 +135,7 @@ export default function Hero() {
 
         {/* ⭐ Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+
           <a
             href="#about"
             className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-3 rounded-full
@@ -148,6 +152,7 @@ export default function Hero() {
           >
             Download Resume
           </a>
+
         </div>
       </motion.div>
     </section>

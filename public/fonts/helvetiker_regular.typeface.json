@@ -1,0 +1,13 @@
+{
+  "glyphs": {
+    "0": {"ha": 556, "x_min": 0, "x_max": 0, "o": "M 556 342 Q 556 171 463 67 Q 381 -24 278 -24 Q 175 -24 93 67 Q 0 171 0 342 Q 0 513 93 617 Q 175 708 278 708 Q 381 708 463 617 Q 556 513 556 342 Z M 463 342 Q 463 483 394 567 Q 336 639 278 639 Q 220 639 162 567 Q 93 483 93 342 Q 93 201 162 117 Q 220 45 278 45 Q 336 45 394 117 Q 463 201 463 342 Z"}
+  },
+  "familyName": "Helvetiker",
+  "ascender": 800,
+  "descender": -200,
+  "underlinePosition": -100,
+  "underlineThickness": 50,
+  "boundingBox": {"yMin": -200, "xMin": -200, "yMax": 800, "xMax": 800},
+  "resolution": 1000,
+  "original_font_information": {"format": 0, "copyright": "", "fontFamily": "Helvetiker", "fontSubfamily": "Regular", "uniqueID": "", "fullName": "", "version": "", "postScriptName": ""}
+}

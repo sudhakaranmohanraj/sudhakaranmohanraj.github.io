@@ -2,7 +2,7 @@
 
 import { useRef, Suspense, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Text3D, Center, Float, Points, PointMaterial } from "@react-three/drei";
+import { Points, PointMaterial } from "@react-three/drei";
 import { motion } from "framer-motion";
 import * as THREE from "three";
 
@@ -60,35 +60,6 @@ function Particles() {
   );
 }
 
-/* ⭐ 3D Text */
-function AnimatedText() {
-  return (
-    <Float speed={2} rotationIntensity={0.4} floatIntensity={1.5}>
-      <Center>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.5}
-          height={0.2}
-          curveSegments={12}
-          bevelEnabled
-          bevelThickness={0.02}
-          bevelSize={0.02}
-          bevelSegments={5}
-        >
-          Sudhakaran
-          <meshStandardMaterial
-            color="#8b5cf6"
-            metalness={0.8}
-            roughness={0.2}
-            emissive="#8b5cf6"
-            emissiveIntensity={0.4}
-          />
-        </Text3D>
-      </Center>
-    </Float>
-  );
-}
-
 /* ⭐ HERO */
 export default function Hero() {
   return (
@@ -106,9 +77,7 @@ export default function Hero() {
 
           <Particles />
 
-          <Suspense fallback={null}>
-            <AnimatedText />
-          </Suspense>
+          {/* ❌ Removed AnimatedText */}
         </Canvas>
       </div>
 

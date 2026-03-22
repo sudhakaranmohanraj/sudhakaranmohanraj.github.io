@@ -90,7 +90,7 @@ export default function Hero() {
       >
         {/* ⭐ Logo */}
         <motion.img
-          src="/sm-logo.svg"
+          src="/sm.webp"
           alt="Sudhakaran Mohanraj Logo"
           width={80}
           height={80}

@@ -1,30 +1,35 @@
 import { motion } from "framer-motion";
 
-/* ⭐ Photo storytelling data */
+/* ⭐ Photo storytelling data — alt text added for accessibility & SEO */
 const photos = [
   {
     src: "/lens/temple1.webp",
+    alt: "Ranganathar Temple Srirangam — world's largest active Hindu temple complex",
     title: "Ranganathar Temple, Srirangam",
-    desc: "World’s largest active temple complex, where devotion breathes through stone.",
+    desc: "World's largest active temple complex, where devotion breathes through stone.",
   },
   {
     src: "/lens/temple2.webp",
+    alt: "Brihadeeswarar Temple Thanjavur — Chola Dravidian granite architecture",
     title: "Brihadeeswarar Temple, Thanjavur",
     desc: "Chola brilliance carved in granite — timeless Dravidian mastery.",
   },
   {
     src: "/lens/temple3.webp",
+    alt: "Brihadeeswarar Temple tower rising 216 feet — Tamil heritage landmark",
     title: "216 Feet of Language & Legacy",
     desc: "The Brihadeeswarar tower rises 216 feet — echoing the 216 compound letters of Tamil.",
-    special: true, // ⭐ enables 216 animation
+    special: true,
   },
   {
     src: "/lens/leaf.webp",
+    alt: "Macro photography of a water drop resting on a green leaf",
     title: "Leaf & Drop",
     desc: "An eternal love story between a leaf and a resting drop of water.",
   },
   {
     src: "/lens/temple4.webp",
+    alt: "Chidambaram Temple — the cosmic dance of Nataraja in Dravidian architecture",
     title: "Chidambaram Temple",
     desc: "Where space becomes divine — the cosmic dance of Nataraja.",
   },
@@ -57,9 +62,14 @@ export default function Lens() {
               flex items-center justify-center p-3
             "
           >
-            {/* ⭐ IMAGE */}
+            {/* ⭐ IMAGE — alt, width, height & loading="lazy" added */}
             <img
               src={photo.src}
+              alt={photo.alt}
+              width={400}
+              height={360}
+              loading="lazy"
+              decoding="async"
               className="
                 max-w-full max-h-[360px]
                 object-contain rounded-xl
@@ -99,7 +109,7 @@ export default function Lens() {
                 {/* ⭐ Quote style */}
                 {photo.special && (
                   <p className="text-xs text-cyan-200 mt-2 italic">
-                    “Architecture speaking the language of Tamil.”
+                    "Architecture speaking the language of Tamil."
                   </p>
                 )}
               </div>
@@ -116,8 +126,14 @@ export default function Lens() {
             flex items-center justify-center p-3
           "
         >
+          {/* ⭐ IMAGE — alt, width, height & loading="lazy" added */}
           <img
             src={photos[4].src}
+            alt={photos[4].alt}
+            width={800}
+            height={320}
+            loading="lazy"
+            decoding="async"
             className="
               max-w-full max-h-[320px]
               object-contain rounded-xl

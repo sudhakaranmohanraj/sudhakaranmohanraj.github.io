@@ -1,17 +1,26 @@
+"use client";
+
 import { useRef, Suspense, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Text3D, Center, Float, Points, PointMaterial } from "@react-three/drei";
 import { motion } from "framer-motion";
 import * as THREE from "three";
 
-/* ⭐ Floating particles with mouse parallax */
+/* ⭐ Mobile check (SSR safe) */
+const isMobile =
+  typeof window !== "undefined" ? window.innerWidth < 768 : false;
+
+/* ⭐ Optimized particle count */
+const PARTICLE_COUNT = isMobile ? 400 : 1500;
+
+/* ⭐ Floating particles */
 function Particles() {
   const ref = useRef<THREE.Points>(null);
   const { mouse } = useThree();
 
   const particles = useMemo(() => {
-    const arr = new Float32Array(1800 * 3);
-    for (let i = 0; i < 1800; i++) {
+    const arr = new Float32Array(PARTICLE_COUNT * 3);
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
       arr[i * 3] = (Math.random() - 0.5) * 12;
       arr[i * 3 + 1] = (Math.random() - 0.5) * 12;
       arr[i * 3 + 2] = (Math.random() - 0.5) * 12;
@@ -26,11 +35,11 @@ function Particles() {
     const array = positions.array as Float32Array;
 
     for (let i = 0; i < array.length; i += 3) {
-      // vertical floating
-      array[i + 1] += 0.0025 + Math.sin(state.clock.elapsedTime + i) * 0.0007;
+      array[i + 1] +=
+        0.0025 + Math.sin(state.clock.elapsedTime + i) * 0.0007;
+
       if (array[i + 1] > 6) array[i + 1] = -6;
 
-      // mouse parallax
       array[i] += mouse.x * 0.0007;
       array[i + 2] += mouse.y * 0.0007;
     }
@@ -51,7 +60,7 @@ function Particles() {
   );
 }
 
-/* ⭐ 3D name */
+/* ⭐ 3D Text */
 function AnimatedText() {
   return (
     <Float speed={2} rotationIntensity={0.4} floatIntensity={1.5}>
@@ -85,12 +94,12 @@ export default function Hero() {
   return (
     <section className="h-[100svh] relative overflow-hidden w-screen">
       
-      {/* ⭐ Gradient background */}
+      {/* ⭐ Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900" />
 
       {/* ⭐ Canvas */}
       <div className="absolute inset-0 w-screen h-full">
-        <Canvas camera={{ position: [0, 0, 5], fov: 75 }} dpr={[1, 1.5]}>
+        <Canvas camera={{ position: [0, 0, 5], fov: 75 }} dpr={[1, 1.2]}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[5, 5, 5]} intensity={1.5} />
           <pointLight position={[-5, -5, -5]} intensity={1.5} color="#22d3ee" />
@@ -103,17 +112,19 @@ export default function Hero() {
         </Canvas>
       </div>
 
-      {/* ⭐ UI layer */}
+      {/* ⭐ UI Layer */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="absolute bottom-24 inset-x-0 text-center w-full max-w-2xl mx-auto px-4"
       >
-        {/* ⭐ Neon logo */}
+        {/* ⭐ Logo */}
         <motion.img
-          src="/sm-logo.webp"
+          src="/sm-logo.svg"
           alt="Sudhakaran Mohanraj Logo"
+          width={80}
+          height={80}
           animate={{
             scale: [1, 1.08, 1],
             opacity: [0.9, 1, 0.9],
@@ -135,11 +146,11 @@ export default function Hero() {
 
         {/* ⭐ Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-
+          
           <a
             href="#about"
             className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-3 rounded-full
-            hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:scale-105"
+            hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer"
           >
             Who Am I
           </a>
@@ -148,7 +159,7 @@ export default function Hero() {
             href="/Sudhakaran_Mohanraj_Resume.pdf"
             download="Sudhakaran_Resume.pdf"
             className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-3 rounded-full
-            hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-lg hover:scale-105"
+            hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer"
           >
             Download Resume
           </a>
